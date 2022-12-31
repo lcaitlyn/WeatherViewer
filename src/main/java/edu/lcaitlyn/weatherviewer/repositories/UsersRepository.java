@@ -3,13 +3,11 @@ package edu.lcaitlyn.weatherviewer.repositories;
 import edu.lcaitlyn.weatherviewer.models.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Optional;
 
-@Component
 public class UsersRepository implements CrudRepository<User> {
     private final JdbcTemplate jdbcTemplate;
 
