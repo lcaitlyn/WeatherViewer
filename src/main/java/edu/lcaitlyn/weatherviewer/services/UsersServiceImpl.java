@@ -22,8 +22,9 @@ public class UsersServiceImpl implements UsersService{
 
     @Override
     public boolean signIn(String email, String password) {
-        Optional<User> user = usersRepository.findByEmail(email);
+//        Optional<User> user = usersRepository.findByEmail(email);
 
-        return user.isPresent() && passwordEncoder.matches(password, user.get().getPassword());
+//        return user.isPresent() && passwordEncoder.matches(password, user.get().getPassword());
+        return false;
     }
 }

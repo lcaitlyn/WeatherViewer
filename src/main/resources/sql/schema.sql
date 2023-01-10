@@ -3,7 +3,7 @@ CREATE SCHEMA IF NOT EXISTS WeatherViewer;
 CREATE TABLE IF NOT EXISTS WeatherViewer.users (
     ID SERIAL PRIMARY KEY,
     Email VARCHAR(256) UNIQUE NOT NULL,
-    Password VARCHAR(256) UNIQUE NOT NULL
+    Password VARCHAR(256) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS WeatherViewer.locations (
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS WeatherViewer.locations (
 );
 
 CREATE TABLE IF NOT EXISTS WeatherViewer.sessions (
-    ID VARCHAR(256) NOT NULL,
+    ID VARCHAR(256) PRIMARY KEY,
     UserID BIGINT REFERENCES WeatherViewer.users(ID),
     ExpiresAt TIMESTAMP NOT NULL
 );
