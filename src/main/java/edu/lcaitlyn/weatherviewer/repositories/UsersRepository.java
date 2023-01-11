@@ -12,29 +12,56 @@ public class UsersRepository implements CrudRepository<User> {
     @Override
     public Optional<User> findById(Long id) {
         session.getTransaction().begin();
-        session.get
-        session.close();
+
+        User user = session.get(User.class, id);
+
+        session.getTransaction().commit();
+
+        return Optional.ofNullable(user);
     }
 
     @Override
     public List<User> findAll() {
-        return null;
+        session.getTransaction().begin();
+
+        List<User> list = session.createQuery("FROM User").getResultList();
+
+        session.getTransaction().commit();
+
+        return list;
     }
 
     @Override
     public void save(User entity) {
         session.getTransaction().begin();
+
         session.save(entity);
+
         session.getTransaction().commit();
     }
 
     @Override
     public void update(User entity) {
+        session.getTransaction().begin();
 
+        session.saveOrUpdate(entity);
+
+        session.getTransaction().commit();
     }
 
     @Override
     public void delete(Long id) {
+        session.getTransaction().begin();
 
+        User user = session.get(User.class, id);
+
+        session.delete(user);
+
+        session.getTransaction().commit();
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        HibernateUtil.close();
     }
 }
