@@ -1,11 +1,12 @@
 package edu.lcaitlyn.weatherviewer.repositories;
 
 import edu.lcaitlyn.weatherviewer.models.User;
+import edu.lcaitlyn.weatherviewer.utils.HibernateUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class UsersRepositoryTest {
-    private final UsersRepository usersRepository = new UsersRepository();
+    private final UsersRepository usersRepository = new UsersRepository(HibernateUtil.getSessionFactory().openSession());
 
     @Test
     public void isUserExists() throws Exception {

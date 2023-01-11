@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
-public class Utils {
+public class ServletUtils {
     public static String getStringFromPartName(HttpServletRequest request, String partName) {
         try {
             Part part = request.getPart(partName);

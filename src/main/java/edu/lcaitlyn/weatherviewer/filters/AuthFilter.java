@@ -19,15 +19,15 @@ public class AuthFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpServletRequest req = (HttpServletRequest) request;
 
-        if (req.getSession().getAttribute("authorized") == null) {
-            req.getSession().setAttribute("authorized", false);
-        }
-
-        if (req.getSession().getAttribute("authorized").equals(true)
-                && req.getSession().getAttribute("user") != null) {
-            resp.sendRedirect(req.getContextPath() + "/profile");
-            return;
-        }
+//        if (req.getSession().getAttribute("authorized") == null) {
+//            req.getSession().setAttribute("authorized", false);
+//        }
+//
+//        if (req.getSession().getAttribute("authorized").equals(true)
+//                && req.getSession().getAttribute("user") != null) {
+//            resp.sendRedirect(req.getContextPath() + "/profile");
+//            return;
+//        }
 
         chain.doFilter(request, response);
     }

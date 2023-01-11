@@ -10,14 +10,16 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "locations", schema = "weatherviewer")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor  @AllArgsConstructor
 public class Location {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private Long userId;
+
     private BigDecimal latitude;
+
     private BigDecimal longitude;
 }

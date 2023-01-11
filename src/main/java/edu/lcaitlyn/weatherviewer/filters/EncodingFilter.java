@@ -19,10 +19,7 @@ public class EncodingFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpServletRequest req = (HttpServletRequest) request;
 
-
-        // исправить
         resp.setContentType("text/xml; charset=UTF-8");
-
 
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");

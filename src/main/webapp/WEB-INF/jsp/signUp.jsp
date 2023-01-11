@@ -13,14 +13,6 @@
     <form enctype="multipart/form-data" method="post">
         <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
         <div class="form-floating">
-            <input name="firstname" type="text" class="form-control" id="inputFirstName" placeholder="Andrey">
-            <label for="floatingInput">First Name</label>
-        </div>
-        <div class="form-floating">
-            <input name="secondname" type="text" class="form-control" id="inputSecondName" placeholder="Sidorov">
-            <label for="floatingInput">Second Name</label>
-        </div>
-        <div class="form-floating">
             <input name="email" type="email" class="form-control" id="floatingInput" placeholder="andreysidorov228@mail.ru">
             <label for="floatingInput">Email address</label>
         </div>

@@ -8,11 +8,11 @@ import java.util.Optional;
 
 public class UsersServiceImpl implements UsersService{
     private final UsersRepository usersRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public UsersServiceImpl(UsersRepository usersRepository, BCryptPasswordEncoder passwordEncoder) {
+    @Deprecated
+    public UsersServiceImpl(UsersRepository usersRepository) {
         this.usersRepository = usersRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -22,9 +22,8 @@ public class UsersServiceImpl implements UsersService{
 
     @Override
     public boolean signIn(String email, String password) {
-//        Optional<User> user = usersRepository.findByEmail(email);
+        Optional<User> user = usersRepository.findByEmail(email);
 
-//        return user.isPresent() && passwordEncoder.matches(password, user.get().getPassword());
-        return false;
+        return user.isPresent() && passwordEncoder.matches(password, user.get().getPassword());
     }
 }

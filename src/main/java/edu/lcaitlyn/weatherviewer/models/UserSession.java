@@ -1,8 +1,6 @@
 package edu.lcaitlyn.weatherviewer.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,10 +10,15 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Session {
+public class UserSession {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
-    private Long userId;
-    private LocalDateTime expiresTime;
+
+    @ManyToOne
+    @JoinColumn(name = "userid", referencedColumnName = "id")
+    @NonNull
+    private User user;
+
+    @NonNull
+    private LocalDateTime expiresAt;
 }

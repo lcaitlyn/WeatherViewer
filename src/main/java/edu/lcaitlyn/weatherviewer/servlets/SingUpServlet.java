@@ -1,5 +1,8 @@
 package edu.lcaitlyn.weatherviewer.servlets;
 
+import edu.lcaitlyn.weatherviewer.services.UsersService;
+import edu.lcaitlyn.weatherviewer.services.UsersServiceImpl;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -8,9 +11,11 @@ import java.io.IOException;
 @MultipartConfig
 @WebServlet(name = "SingUpServlet", urlPatterns = "/signUp")
 public class SingUpServlet extends HttpServlet {
+    private UsersService usersService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
+        usersService = (UsersService) config.getServletContext().getAttribute("usersService");
     }
 
     @Override
@@ -20,9 +25,14 @@ public class SingUpServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = Utils.getStringFromPartName(request, "email");
-        String password = Utils.getStringFromPartName(request, "password");
+        String email = ServletUtils.getStringFromPartName(request, "email");
+        String password = ServletUtils.getStringFromPartName(request, "password");
 
+        if (!ServletUtils.isValidArgs(email, password)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
 
+        usersService.signUp(email, password);
     }
 }

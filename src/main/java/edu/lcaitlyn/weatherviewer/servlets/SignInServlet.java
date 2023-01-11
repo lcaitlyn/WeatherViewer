@@ -20,8 +20,8 @@ public class SignInServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = Utils.getStringFromPartName(request, "email");
-        String password = Utils.getStringFromPartName(request, "password");
+        String email = ServletUtils.getStringFromPartName(request, "email");
+        String password = ServletUtils.getStringFromPartName(request, "password");
 
     }
 }
