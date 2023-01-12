@@ -13,16 +13,26 @@
     <form enctype="multipart/form-data" method="post">
         <h1 class="h3 mb-3 fw-normal">Sign Up</h1>
         <div class="form-floating">
-            <input name="email" type="email" class="form-control" id="floatingInput" placeholder="andreysidorov228@mail.ru">
+            <input name="email" type="email" class="form-control" id="floatingInput" required>
             <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
-            <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="andrey123">
+            <input name="password" type="password" class="form-control" id="floatingPassword" required>
             <label for="floatingPassword">Password</label>
         </div>
-
+        <hr>
         <button name="signIn" class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+
     </form>
+    <%
+        String error = (String) request.getAttribute("error");
+
+        if (error != null) {
+            out.println("<div class=\"alert alert-danger\">");
+            out.println(error);
+            out.println("</div>");
+        }
+    %>
 </main>
 </body>
 </html>

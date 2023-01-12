@@ -33,12 +33,14 @@ public class SingUpServlet extends HttpServlet {
         String password = ServletUtils.getStringFromPartName(request, "password");
 
         if (!ServletUtils.isValidArgs(email, password)) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Введите email и password");
+            request.setAttribute("error", "Введите email и password");
+            doGet(request, response);
             return;
         }
 
         if (usersRepository.findByEmail(email).isPresent()) {
-            response.sendError(HttpServletResponse.SC_CONFLICT, "Такой пользователь уже существует");
+            request.setAttribute("error", "Такой пользователь уже существует");
+            doGet(request, response);
             return;
         }
 

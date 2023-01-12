@@ -3,6 +3,7 @@ package edu.lcaitlyn.weatherviewer.repositories;
 import edu.lcaitlyn.weatherviewer.models.User;
 import org.hibernate.Session;
 
+import javax.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,11 +29,15 @@ public class UsersRepositoryImpl implements UsersRepository {
     public Optional<User> findByEmail(String email) {
         session.getTransaction().begin();
 
-        User user = session.get(User.class, email);
+        Query query = session.createQuery("FROM User WHERE email = :email");
+
+        query.setParameter("email", email);
+
+        List<User> list = query.getResultList();
 
         session.getTransaction().commit();
 
-        return Optional.ofNullable(user);
+        return (list.isEmpty()) ? Optional.empty() : Optional.of(list.get(0));
     }
 
     @Override
