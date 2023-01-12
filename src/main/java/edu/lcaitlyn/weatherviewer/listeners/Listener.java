@@ -1,6 +1,6 @@
 package edu.lcaitlyn.weatherviewer.listeners;
 
-import edu.lcaitlyn.weatherviewer.repositories.UsersRepository;
+import edu.lcaitlyn.weatherviewer.repositories.UsersRepositoryImpl;
 import edu.lcaitlyn.weatherviewer.services.UsersService;
 import edu.lcaitlyn.weatherviewer.services.UsersServiceImpl;
 import edu.lcaitlyn.weatherviewer.utils.HibernateUtil;
@@ -19,7 +19,7 @@ public class Listener implements ServletContextListener, HttpSessionListener, Ht
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext context = sce.getServletContext();
 
-        UsersRepository usersRepository = new UsersRepository(HibernateUtil.getSessionFactory().openSession());
+        UsersRepositoryImpl usersRepository = new UsersRepositoryImpl(HibernateUtil.getSessionFactory().openSession());
         UsersService usersService = new UsersServiceImpl(usersRepository);
 
         context.setAttribute("usersRepository", usersRepository);

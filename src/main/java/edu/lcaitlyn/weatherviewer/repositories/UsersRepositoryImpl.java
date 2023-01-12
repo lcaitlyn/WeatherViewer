@@ -1,17 +1,15 @@
 package edu.lcaitlyn.weatherviewer.repositories;
 
 import edu.lcaitlyn.weatherviewer.models.User;
-import edu.lcaitlyn.weatherviewer.models.UserSession;
-import edu.lcaitlyn.weatherviewer.utils.HibernateUtil;
 import org.hibernate.Session;
 
 import java.util.List;
 import java.util.Optional;
 
-public class UsersRepository implements CrudRepository<User> {
+public class UsersRepositoryImpl implements UsersRepository {
     private final Session session;
 
-    public UsersRepository(Session session) {
+    public UsersRepositoryImpl(Session session) {
         this.session = session;
     }
 
@@ -26,6 +24,7 @@ public class UsersRepository implements CrudRepository<User> {
         return Optional.ofNullable(user);
     }
 
+    @Override
     public Optional<User> findByEmail(String email) {
         session.getTransaction().begin();
 

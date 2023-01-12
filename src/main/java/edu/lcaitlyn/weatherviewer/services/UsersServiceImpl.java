@@ -1,17 +1,17 @@
 package edu.lcaitlyn.weatherviewer.services;
 
 import edu.lcaitlyn.weatherviewer.models.User;
-import edu.lcaitlyn.weatherviewer.repositories.UsersRepository;
+import edu.lcaitlyn.weatherviewer.repositories.UsersRepositoryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;
 
 public class UsersServiceImpl implements UsersService{
-    private final UsersRepository usersRepository;
+    private final UsersRepositoryImpl usersRepository;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Deprecated
-    public UsersServiceImpl(UsersRepository usersRepository) {
+    public UsersServiceImpl(UsersRepositoryImpl usersRepository) {
         this.usersRepository = usersRepository;
     }
 

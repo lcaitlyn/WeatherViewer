@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class UsersRepositoryTest {
-    private final UsersRepository usersRepository = new UsersRepository(HibernateUtil.getSessionFactory().openSession());
+    private final UsersRepositoryImpl usersRepository = new UsersRepositoryImpl(HibernateUtil.getSessionFactory().openSession());
 
     @Test
     public void isUserExists() throws Exception {
