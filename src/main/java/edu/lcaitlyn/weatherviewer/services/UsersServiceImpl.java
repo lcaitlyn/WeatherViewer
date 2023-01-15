@@ -11,7 +11,6 @@ public class UsersServiceImpl implements UsersService{
     private final UsersRepository usersRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    @Deprecated
     public UsersServiceImpl(UsersRepository usersRepository) {
         this.usersRepository = usersRepository;
         passwordEncoder = new BCryptPasswordEncoder();

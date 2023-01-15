@@ -34,21 +34,26 @@ public class SignInServlet extends HttpServlet {
         String password = ServletUtils.getStringFromPartName(request, "password");
 
         if (!ServletUtils.isValidArgs(email, password)) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Введите email и password");
+            request.setAttribute("error", "Enter email and password");
+            doGet(request, response);
             return;
         }
 
         if (!usersRepository.findByEmail(email).isPresent()) {
-            response.sendError(HttpServletResponse.SC_CONFLICT, "Такой пользователь не существует");
+            request.setAttribute("error", "Incorrect email");
+            doGet(request, response);
             return;
         }
 
         if (!usersService.signIn(email, password)){
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Неверный пароль");
+            request.setAttribute("error", "Incorrect password");
+            doGet(request, response);
             return;
         }
 
-        response.addCookie(userSessionsService.createCookie(usersRepository.findByEmail(email).get()));
+        Cookie sessionCookie = userSessionsService.createCookie(usersRepository.findByEmail(email).get());
+        sessionCookie.setMaxAge(24 * 60 * 60);
+        response.addCookie(sessionCookie);
 
         response.sendRedirect(request.getContextPath() + "/profile");
     }

@@ -22,7 +22,6 @@
         </div>
         <hr>
         <button name="signIn" class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
-
     </form>
     <%
         String error = (String) request.getAttribute("error");

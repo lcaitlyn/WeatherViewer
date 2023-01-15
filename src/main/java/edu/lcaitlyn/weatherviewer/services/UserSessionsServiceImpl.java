@@ -45,6 +45,17 @@ public class UserSessionsServiceImpl implements UserSessionsService {
     }
 
     @Override
+    public Optional<User> getUser(String userSessionId) {
+        Optional<UserSession> userSession = userSessionsRepository.findById(userSessionId);
+
+        if (userSession.isPresent()) {
+            return Optional.of(userSession.get().getUser());
+        }
+
+        return Optional.empty();
+    }
+
+    @Override
     public void deleteSession(String userSessionId) {
         userSessionsRepository.delete(userSessionId);
     }

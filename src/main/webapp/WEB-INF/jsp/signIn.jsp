@@ -23,6 +23,15 @@
         <hr>
         <button name="signIn" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
     </form>
+    <%
+        String error = (String) request.getAttribute("error");
+
+        if (error != null) {
+            out.println("<div class=\"alert alert-danger\">");
+            out.println(error);
+            out.println("</div>");
+        }
+    %>
 </main>
 </body>
 </html>

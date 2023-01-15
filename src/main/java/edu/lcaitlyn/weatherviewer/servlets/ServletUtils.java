@@ -5,6 +5,7 @@ import javax.servlet.http.Part;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.util.stream.Collectors;
 
 public class ServletUtils {
@@ -34,5 +35,18 @@ public class ServletUtils {
         }
 
         return true;
+    }
+
+    public static boolean isStringDouble(String d) {
+        try {
+            Double.parseDouble(d);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static BigDecimal getBigDecimalFromString(String s) {
+        return BigDecimal.valueOf(Double.parseDouble(s));
     }
 }

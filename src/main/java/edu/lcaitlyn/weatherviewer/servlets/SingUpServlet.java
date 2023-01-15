@@ -45,5 +45,7 @@ public class SingUpServlet extends HttpServlet {
         }
 
         usersService.signUp(email, password);
+
+        response.sendRedirect(request.getContextPath() + "/signIn");
     }
 }

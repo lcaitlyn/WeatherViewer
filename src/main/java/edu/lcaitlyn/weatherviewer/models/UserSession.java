@@ -10,16 +10,13 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class UserSession {
     @Id
     private String id;
-
     @ManyToOne
     @JoinColumn(name = "userid", referencedColumnName = "id")
     @NonNull
     private User user;
-
     @NonNull
     private LocalDateTime expiresAt;
 }

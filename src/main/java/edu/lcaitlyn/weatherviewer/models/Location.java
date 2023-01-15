@@ -1,8 +1,6 @@
 package edu.lcaitlyn.weatherviewer.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -10,16 +8,22 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "locations", schema = "weatherviewer")
 @Data
-@NoArgsConstructor  @AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class Location {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String name;
-
-    private Long userId;
-
+    @NonNull
+    private String city;
+    @NonNull
+    private String country;
+    @ManyToOne
+    @JoinColumn(name = "userid", referencedColumnName = "id")
+    @NonNull
+    private User user;
+    @NonNull
     private BigDecimal latitude;
-
+    @NonNull
     private BigDecimal longitude;
 }
