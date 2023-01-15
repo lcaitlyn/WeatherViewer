@@ -53,7 +53,6 @@ public class WeatherServiceImpl implements WeatherService {
 
         try {
             URL u = new URL(url);
-
             HttpURLConnection connection = (HttpURLConnection) u.openConnection();
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -75,7 +74,6 @@ public class WeatherServiceImpl implements WeatherService {
 
         try {
             URL u = new URL(url);
-
             HttpURLConnection connection = (HttpURLConnection) u.openConnection();
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -97,7 +95,6 @@ public class WeatherServiceImpl implements WeatherService {
 
         try {
             URL u = new URL(url);
-
             HttpURLConnection connection = (HttpURLConnection) u.openConnection();
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {

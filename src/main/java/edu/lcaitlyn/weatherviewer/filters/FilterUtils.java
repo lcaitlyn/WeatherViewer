@@ -10,8 +10,8 @@ import java.util.Optional;
 public class FilterUtils {
     private final UserSessionsService userSessionsService;
 
-    public FilterUtils(UserSessionsService userSessionservice) {
-        this.userSessionsService = userSessionservice;
+    public FilterUtils(UserSessionsService userSessionsService) {
+        this.userSessionsService = userSessionsService;
     }
 
     public boolean isUserAuthorized(HttpServletRequest req) {
@@ -51,7 +51,6 @@ public class FilterUtils {
                 }
             }
         }
-
         return Optional.empty();
     }
 }

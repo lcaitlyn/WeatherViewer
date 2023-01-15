@@ -1,16 +1,12 @@
 package edu.lcaitlyn.weatherviewer.servlets;
 
 import edu.lcaitlyn.weatherviewer.dto.LocationDto;
-import edu.lcaitlyn.weatherviewer.filters.FilterUtils;
-import edu.lcaitlyn.weatherviewer.models.Location;
-import edu.lcaitlyn.weatherviewer.services.UserSessionsService;
 import edu.lcaitlyn.weatherviewer.services.WeatherService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Optional;
 
 @MultipartConfig

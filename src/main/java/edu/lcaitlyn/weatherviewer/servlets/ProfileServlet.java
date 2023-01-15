@@ -1,19 +1,15 @@
 package edu.lcaitlyn.weatherviewer.servlets;
 
 import edu.lcaitlyn.weatherviewer.dto.LocationTemperatureDto;
-import edu.lcaitlyn.weatherviewer.filters.FilterUtils;
 import edu.lcaitlyn.weatherviewer.models.Location;
 import edu.lcaitlyn.weatherviewer.models.User;
 import edu.lcaitlyn.weatherviewer.services.LocationsService;
-import edu.lcaitlyn.weatherviewer.services.UserSessionsService;
 import edu.lcaitlyn.weatherviewer.services.WeatherService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

@@ -1,7 +1,5 @@
 package edu.lcaitlyn.weatherviewer.filters;
 
-import edu.lcaitlyn.weatherviewer.services.UserSessionsService;
-
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServletRequest;

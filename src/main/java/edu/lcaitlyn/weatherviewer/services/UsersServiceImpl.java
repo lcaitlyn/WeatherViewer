@@ -2,7 +2,6 @@ package edu.lcaitlyn.weatherviewer.services;
 
 import edu.lcaitlyn.weatherviewer.models.User;
 import edu.lcaitlyn.weatherviewer.repositories.UsersRepository;
-import edu.lcaitlyn.weatherviewer.repositories.UsersRepositoryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;

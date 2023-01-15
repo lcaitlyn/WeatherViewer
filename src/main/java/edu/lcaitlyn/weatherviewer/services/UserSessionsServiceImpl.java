@@ -27,9 +27,7 @@ public class UserSessionsServiceImpl implements UserSessionsService {
 
         userSessionsRepository.save(userSession);
 
-        Cookie cookie = new Cookie("usersessionid", id);
-
-        return cookie;
+        return new Cookie("usersessionid", id);
     }
 
     @Override

@@ -28,12 +28,10 @@ public class ServletUtils {
             if (s == null) {
                 return false;
             }
-
             if (s.isEmpty()) {
                 return false;
             }
         }
-
         return true;
     }
 

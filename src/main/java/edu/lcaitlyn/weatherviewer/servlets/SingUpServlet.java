@@ -1,9 +1,7 @@
 package edu.lcaitlyn.weatherviewer.servlets;
 
-import edu.lcaitlyn.weatherviewer.models.User;
 import edu.lcaitlyn.weatherviewer.repositories.UsersRepository;
 import edu.lcaitlyn.weatherviewer.services.UsersService;
-import edu.lcaitlyn.weatherviewer.services.UsersServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -33,13 +31,13 @@ public class SingUpServlet extends HttpServlet {
         String password = ServletUtils.getStringFromPartName(request, "password");
 
         if (!ServletUtils.isValidArgs(email, password)) {
-            request.setAttribute("error", "Введите email и password");
+            request.setAttribute("error", "Enter email and password");
             doGet(request, response);
             return;
         }
 
         if (usersRepository.findByEmail(email).isPresent()) {
-            request.setAttribute("error", "Такой пользователь уже существует");
+            request.setAttribute("error", "User already exists");
             doGet(request, response);
             return;
         }
