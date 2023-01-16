@@ -22,11 +22,6 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect(request.getContextPath() + "/signIn");
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Optional<Cookie> cookie = filterUtils.getSessionCookie(request.getCookies());
 
         if (!cookie.isPresent()) {

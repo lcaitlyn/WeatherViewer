@@ -24,14 +24,16 @@ public class SearchServlet extends HttpServlet {
         String city = request.getParameter("city");
 
         if (!ServletUtils.isValidArgs(city)) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "/search?city=Moscow");
+            request.setAttribute("error", "400 Bad request. Search like -> /search?city=London");
+            request.getRequestDispatcher("/WEB-INF/jsp/search.jsp").forward(request, response);
             return;
         }
 
         Optional<LocationDto[]> locations = weatherService.findLocations(city);
 
         if (!locations.isPresent()) {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, city + " is not found");
+            request.setAttribute("error", "404 Not found");
+            request.getRequestDispatcher("/WEB-INF/jsp/search.jsp").forward(request, response);
             return;
         }
 

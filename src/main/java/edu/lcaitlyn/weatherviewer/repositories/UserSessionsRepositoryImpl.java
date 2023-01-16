@@ -3,6 +3,8 @@ package edu.lcaitlyn.weatherviewer.repositories;
 import edu.lcaitlyn.weatherviewer.models.UserSession;
 import org.hibernate.Session;
 
+import javax.persistence.Query;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,8 +55,6 @@ public class UserSessionsRepositoryImpl implements UserSessionsRepository {
         session.getTransaction().commit();
     }
 
-
-
     @Override
     public void delete(String id) {
         session.getTransaction().begin();
@@ -64,5 +64,22 @@ public class UserSessionsRepositoryImpl implements UserSessionsRepository {
         session.delete(userSession);
 
         session.getTransaction().commit();
+    }
+
+    @Override
+    public void deleteExpired() {
+        session.getTransaction().begin();
+
+        Query query = session.createQuery("FROM UserSession WHERE expiresAt < : now ");
+
+        query.setParameter("now", LocalDateTime.now());
+
+        List<UserSession> list = query.getResultList();
+
+        session.getTransaction().commit();
+
+        for (UserSession s : list) {
+            System.out.println(s);
+        }
     }
 }

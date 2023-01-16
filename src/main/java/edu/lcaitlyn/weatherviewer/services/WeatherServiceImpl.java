@@ -95,13 +95,14 @@ public class WeatherServiceImpl implements WeatherService {
 
         try {
             URL u = new URL(url);
-            HttpURLConnection connection = (HttpURLConnection) u.openConnection();
+//            HttpURLConnection connection = (HttpURLConnection) u.openConnection();
 
-            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+//            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 weather = new ObjectMapper().readValue(u, LocationTemperatureDto.class);
-            }
+//            }
         } catch (Exception ex) {
-            throw new RuntimeException(ex);
+            return null;
+//            throw new RuntimeException(ex);
         }
 
         return weather;

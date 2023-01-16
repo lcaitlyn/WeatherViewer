@@ -1,55 +1,99 @@
-body {
-    margin: 0;
-    font-family: sans-serif;
+.rifat {
+    width: auto;
+    margin-left: auto;
+    flex-grow: 0;
+    width: 150px;
 }
 
-.container {
-    width: 800px;
-    margin: 200px auto 0;
+.list-widgets {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 30px;
+    list-style: none;
+    padding: 50px;
+    margin: 0 auto;
 }
 
-.container p {
-    margin-top: 0;
-    margin-bottom: 0;
+.widget {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    padding: 30px;
+
+    background-image: linear-gradient( rgb(0, 183, 255), rgb(162, 213, 254));
+    color: white;
+    /* text-shadow: 1px 1px 1px black; */
+    border-radius: 30px;
+}
+
+.widget__city {
+    font-weight: 400;
     font-size: 20px;
-    line-height: 1.6;
 }
 
-.container__photo {
+.widget__temp {
+    font-size: 40px;
+    line-height: 45px;
+}
+
+.widget__img {
+    width: 70px;
+    height: 70px;
+}
+
+p.widget__weather{
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+.widget__minmax {
+    margin-top: auto;
     display: flex;
-    flex-direction: column;
-    width: 35%;
-    margin-right: 20px;
+    column-gap: 30px;
 }
 
-.container__photo img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-    object-fit: cover;
+.widget__minmax p {
+    margin-bottom: 0;
 }
 
-.container form {
+.widget__form-button {
+    position: absolute;
+    right: -12px;
+    top: -12px;
     display: flex;
+    width: min-content;
+    /* outline: 1px solid red; */
+}
+
+.widget__button {
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    display: flex;
+    background-color: #e6e6e7;
+    border: none;
+    color: black;
+    justify-content: center;
     align-items: center;
-    flex-direction: column;
+    padding: 0 0 5px;
+    border-radius: 50%;
+    /* box-shadow: 1px 0px 1px 1px rgba(0, 0, 0, 0.3); */
+    transition: color 0.3s;
+    outline: none;
 }
 
-.container__photo button {
-    margin: 10px auto;
-    padding: 5px 30px;
+.widget__button:hover,
+.widget__button:focus {
+    background-color: #f7f7fa;
+    transition: 0.3s;
 }
 
-.container__right-side {
-    flex-grow: 1;
-}
-
-.container > .table-bordered{
-    border-radius: 20px;
-}
-
-.table {
-    margin-top: 30px;
+.widget__button:active {
+    background-color: #f7f7fa;
+    transition: 0.3s;
+    outline: none;
 }

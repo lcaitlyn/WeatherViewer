@@ -1,21 +1,24 @@
 <%@ page import="edu.lcaitlyn.weatherviewer.dto.LocationDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
 <head>
     <title>Search</title>
 </head>
 <body>
-    <%
-        LocationDto[] locations = (LocationDto[]) request.getAttribute("locations");
+    <c:if test="${error}">
+        <div class="alert alert-danger">
+            <c:out value="{error}"/>
+        </div>
+    </c:if>
 
-        for (LocationDto l : locations) {
-            out.println("<form method=\"POST\" enctype=\"multipart/form-data\" action=\"/add\">");
-            out.println(l);
-            out.println("<input type=\"hidden\" name=\"longitude\" value=\"" + l.getLongitude() + "\">");
-            out.println("<input type=\"hidden\" name=\"latitude\" value=\"" + l.getLatitude() + "\">");
-            out.println("<button type=\"submit\">add</button>");
-            out.println("</form>");
-        }
-    %>
+    <c:forEach items="${locations}" var="location">
+        <form action="${pageContext.request.contextPath}/add" enctype="multipart/form-data" method="post">
+            <c:out value="${location}"/><br>
+            <input name="latitude" type="hidden" value="${location.latitude}">
+            <input name="longitude" type="hidden" value="${location.longitude}">
+            <button type="submit">add</button>
+        </form>
+    </c:forEach>
 </body>
 </html>

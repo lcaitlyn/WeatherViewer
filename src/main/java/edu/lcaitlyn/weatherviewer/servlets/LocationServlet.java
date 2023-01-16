@@ -11,15 +11,13 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 @MultipartConfig
-@WebServlet(name = "LocationServlet", urlPatterns = {"/remove", "/add"})
+@WebServlet(name = "LocationServlet", urlPatterns = {"/add", "/remove"})
 public class LocationServlet extends HttpServlet {
     private LocationsService locationsService;
-    private WeatherService weatherService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         locationsService = (LocationsService) config.getServletContext().getAttribute("locationsService");
-        weatherService = (WeatherService) config.getServletContext().getAttribute("weatherService");
     }
 
     @Override
