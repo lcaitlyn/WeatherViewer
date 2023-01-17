@@ -90,6 +90,7 @@ public class WeatherServiceImpl implements WeatherService {
         return Optional.of(location[0]);
     }
 
+    @Deprecated
     private LocationTemperatureDto getLocationTemperatureFromApi(String url) {
         LocationTemperatureDto weather = null;
 
@@ -124,7 +125,7 @@ public class WeatherServiceImpl implements WeatherService {
 
     private String createWeatherUrl(String lat, String lon, String units, String apiKey) {
         String urlFormated =
-                "https://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&units=%s&appid=%s";
+                "http://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&units=%s&appid=%s";
 
         return String.format(urlFormated, lat, lon, units, apiKey);
     }

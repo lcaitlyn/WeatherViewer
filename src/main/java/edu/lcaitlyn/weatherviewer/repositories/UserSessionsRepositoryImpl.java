@@ -70,16 +70,22 @@ public class UserSessionsRepositoryImpl implements UserSessionsRepository {
     public void deleteExpired() {
         session.getTransaction().begin();
 
-        Query query = session.createQuery("FROM UserSession WHERE expiresAt < : now ");
+        while (true) {
+            Query query = session.createQuery("FROM UserSession WHERE expiresAt < : now");
 
-        query.setParameter("now", LocalDateTime.now());
+            query.setParameter("now", LocalDateTime.now());
 
-        List<UserSession> list = query.getResultList();
+            List<UserSession> list = query.getResultList();
+
+            if (list.isEmpty()) {
+                break;
+            }
+
+            for (UserSession s : list) {
+                session.delete(s);
+            }
+        }
 
         session.getTransaction().commit();
-
-        for (UserSession s : list) {
-            System.out.println(s);
-        }
     }
 }

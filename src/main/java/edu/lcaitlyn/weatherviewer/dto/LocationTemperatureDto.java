@@ -19,5 +19,6 @@ public class LocationTemperatureDto {
     private BigDecimal longitude;
     private Map<String, Double> main;
     private List<Map<String, Serializable>> weather;
+    private Map<String, Serializable> sys;
     private String name;
 }

@@ -39,6 +39,8 @@ public class Listener implements ServletContextListener, HttpSessionListener, Ht
         context.setAttribute("weatherService", weatherService);
         context.setAttribute("locationsRepository", locationsRepository);
         context.setAttribute("locationsService", locationsService);
+
+        userSessionsRepository.deleteExpired();
     }
 
     @Override
