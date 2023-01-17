@@ -24,7 +24,8 @@ Spring MVC/Spring Boot не используем.
 
 ## Реализация
 
-
+![profile](/screens/profile.png)
+![search](/screens/search.png)
 
 ## Функционал приложения
 
